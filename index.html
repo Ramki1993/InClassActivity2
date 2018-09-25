@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+		$(document).ready(function(){
+    	$("button").click(function(){
+		$.ajax({
+        type: "GET",
+        url: "http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=7ae14bcaf98c2f61eeabb10e4b15114e",
+        contentType: "application/json; charset=utf-8",
+        dataType: "jsonp",
+        success: function (data, status, jqXHR) { 
+       	console.log(data);
+       	$("#showresult").html(JSON.stringify(data));
+
+    },
+        error: function(jqXHR, status) {
+            console.log(status);
+        }
+			});
+		});
+});
+	</script>
+</head>
+<body>
+	<div id="showresult"><h2>To Know the current weather click the button below</h2></div>
+
+	<button>Get Weather</button>
+</body>
